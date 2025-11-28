@@ -7,11 +7,11 @@
 [![VitePress](https://img.shields.io/badge/VitePress-Documentation-orange.svg)](https://vitepress.vuejs.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Make translated documentation easier to read.**
+**让翻译后的文档更易于阅读。**
 
 An AI-powered document localization tool that downloads Markdown/MDX documents from GitHub, translates them with DeepSeek or other LLMs, and generates a beautiful local documentation website.
 
-[Documentation](README_CN.md) • [中文文档](README_CN.md)
+[中文文档](README_CN.md)
 
 </div>
 
@@ -19,40 +19,67 @@ An AI-powered document localization tool that downloads Markdown/MDX documents f
 
 ## What is YiDocs?
 
-YiDocs automatically fetches documentation from GitHub repositories, translates them using AI, and renders them locally with a modern design - all while preserving code formatting, file structure, and navigation.
+YiDocs automatically fetches documentation from GitHub repositories, translates them using AI (DeepSeek/OpenAI), and renders them locally with a modern design - all while preserving code formatting, file structure, and navigation.
 
 ## Features
 
-- One-click operation: automatic download, translation, and local server startup
-- Smart AI translation with preserved formatting
-- Flexible source selection from any GitHub repository
-- Beautiful VitePress rendering
-- Concurrent processing with rate limiting
-- Real-time progress tracking
+- **Zero Config**: Interactive setup for API keys and sources.
+- **Smart Translation**: Preserves code blocks, frontmatter, and MDX components.
+- **Incremental Build**: Only translates changed files (based on content hash) to save costs.
+- **VitePress Rendering**: Generates a beautiful static site with search and navigation.
+- **CLI First**: Powerful command-line interface for automation.
 
-## Tech Stack
+## Quick Start
 
-- **Runtime**: Node.js (>= 18)
-- **Downloader**: [giget](https://github.com/unjs/giget)
-- **AI Client**: OpenAI SDK (DeepSeek compatible)
-- **Concurrency**: p-limit
-- **Renderer**: VitePress
+### Installation
 
-## FAQ
+```bash
+npm install -g yidocs
+# Or run directly with npx
+npx yidocs --help
+```
 
-**Q: Does it support private repositories?**
-A: Currently only public repositories are supported.
+### Usage
 
-**Q: Can I use other LLM providers?**
-A: Yes! Configure `apiBaseUrl` to use OpenAI, Anthropic, or any OpenAI-compatible API.
+1. **Configure API Key**
+   Run the config wizard to set up your DeepSeek/OpenAI key.
 
-**Q: How long does translation take?**
-A: Depends on file count, size, and API limits. Typically 10-30 minutes for 50-100 pages.
+   ```bash
+   npx yidocs config
+   ```
+
+2. **Auto Mode (Recommended)**
+   Add a source, translate, and preview in one go.
+
+   ```bash
+   npx yidocs start
+   ```
+
+3. **Manual Workflow**
+   - **Download Source**:
+     ```bash
+     npx yidocs add https://github.com/pmndrs/zustand/tree/main/docs
+     ```
+   - **Translate**:
+     ```bash
+     npx yidocs translate
+     ```
+   - **Build Site**:
+     ```bash
+     npx yidocs build
+     ```
+   - **Preview**:
+     ```bash
+     npx yidocs preview
+     ```
+
+## Configuration
+
+YiDocs uses a local JSON file (`readlocal.config.json`) to store your settings. You generally don't need to edit this manually; use the CLI commands instead.
+
+- **Storage**: `.yidocs/` (Source files, cache, and history)
+- **Output**: `dist-docs/` (Generated VitePress site)
 
 ## License
 
 MIT License - see [LICENSE](LICENSE) file.
-
-## Contributing
-
-Contributions welcome! See [Development.md](./Development.md) for development roadmap and implementation details.

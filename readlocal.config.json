@@ -1,0 +1,15 @@
+{
+  "source": {
+    "repo": "pmndrs/zustand",
+    "branch": "main",
+    "docsPath": "docs"
+  },
+  "translation": {
+    "apiKey": "test-key-not-needed-for-phase-1",
+    "apiBaseUrl": "https://api.deepseek.com"
+  },
+  "output": {
+    "dir": "./dist-docs",
+    "siteTitle": "Zustand Docs"
+  }
+}

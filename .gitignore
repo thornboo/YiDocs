@@ -1,2 +1,31 @@
+# Dependencies
+node_modules
+.pnpm-store
 
+# Environment variables
+.env
+.env.local
+readlocal.config.json
+
+# Build output
+dist
+dist-docs
+.output
+
+# Temporary files
+.temp_raw
+.cache
+.yidocs
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Development                                                                                                                                                                                                 │
 .spec-workflow
